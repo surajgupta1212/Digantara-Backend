@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+    restart: unless-stopped
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    # Add any environment variables your app needs
+    # env_file:
+    #   - .env
+    
+  # Uncomment if you need a database
+  # db:
+  #   image: mongo:latest
+  #   ports:
+  #     - "27017:27017"
+  #   volumes:
+  #     - mongodb_data:/data/db
+  #   environment:
+  #     - MONGO_INITDB_ROOT_USERNAME=root
+  #     - MONGO_INITDB_ROOT_PASSWORD=example
+
+# Uncomment if using a database
+# volumes:
+#   mongodb_data:
